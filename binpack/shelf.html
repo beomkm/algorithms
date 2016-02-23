@@ -1,0 +1,36 @@
+<html>
+    <meta charset="utf-8">
+    <body>
+    <canvas id="canvas1", width=256, height=256, style="border:1px solid #000000"></canvas>
+    <script type = "text/javascript">
+    var c = document.getElementById("canvas1");
+    var ctx = c.getContext("2d");
+
+	  function drawRect(ctx, rect, fillStyle)
+	  {
+      var x = rect.x;
+      var y = rect.y;
+      var w = rect.w;
+      var h = rect.h;
+
+      /* gradient */
+      var r0 = Math.floor(x/c.width*220) + 36;
+      var r1 = Math.floor((x+w)/c.width*220) + 36;
+      var g0 = Math.floor(y/c.height*220) + 36;
+      var g1 = Math.floor((y+h)/c.height*220) + 36;
+      var b0 = Math.floor((1-(x+w+y+h)/(c.width+c.height))*220) + 36;
+      var b1 = Math.floor((1-(x+w+y+h)/(c.width+c.height))*220) + 36;
+      var grd = ctx.createLinearGradient(x, y, x+w, y+h);
+      grd.addColorStop(0, "rgb("+r0+","+g0+","+b0+")");
+      grd.addColorStop(1, "rgb("+r1+","+g1+","+b1+")");
+
+
+  		ctx.beginPath();
+  		ctx.rect(rect.x, rect.y, rect.w, rect.h);
+  		ctx.fillStyle = grd;
+  		ctx.fill();
+  		ctx.stroke();
+  	}
+    </script>
+    </body>
+</html>
