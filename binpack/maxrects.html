@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+	<body>
+	<canvas id="canvas1", width=256, height=256, style="border:1px solid #000000"></canvas>
+	<script type = "text/javascript">
+
+	function isIntersect(r1, r2)
+	{
+	    if(r1.x >= r2.x+r2.w) return false;
+	    if(r1.x+r1.w <= r2.x) return false;
+	    if(r1.y >= r2.y+r2.h) return false;
+	    if(r1.y+r1.h <= r2.y) return false;
+	    return true;
+	}
+
+	function isInclude(r1, r2)
+	{
+		if(r2.x >= r1.x && r2.x+r2.w <= r1.x+r1.w &&
+		r2.y >= r1.y && r2.y+r2.h <= r1.y+r1.h)
+			return true;
+		return false;
+	}
+
+	function getIntersection(r1, r2)
+	{
+		var rect = {};
+		rect.x = Math.max(r1.x, r2.x);
+		rect.y = Math.max(r1.y, r2.y);
+		rect.w = Math.min(r1.x+r1.w, r2.x+r2.w)-rect.x;
+		rect.h = Math.min(r1.y+r1.h, r2.y+r2.h)-rect.y;
+		return rect;
+	}
+
+	</script>
+	</body>
+</html>
