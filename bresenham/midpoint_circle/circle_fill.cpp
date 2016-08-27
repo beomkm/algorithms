@@ -9,7 +9,7 @@ int main(void)
 {	
 	int arr[SIZE][SIZE] = {0,};
 	
-	drawCircle(arr, 11, 13, 13);
+	drawCircle(arr, 11, 11, 13);
 	display(arr);
 	
 	return 0; 
@@ -23,31 +23,31 @@ void drawCircle(int arr[SIZE][SIZE], int r, int cx, int cy)
 	
 	x = 0;
 	y = r;
-	p = 1.25 - r;
+	p = 1 - r;
 	
-	//arr[y+cy][x+cx] = 1;
-	//arr[-y+cy][x+cx] = 1;
-	//arr[x+cy][y+cx] = 1;
-	//arr[x+cy][-y+cx] = 1;
+	arr[y+cy][x+cx] = 1;
+	arr[-y+cy][x+cx] = 1;
+	arr[x+cy][y+cx] = 1;
+	arr[x+cy][-y+cx] = 1;
 
-	//x = 1;
+	x = 1;
 	while(x < y) {
 		
 		if(p < 0) {
-			p += x+x + 3;
+			p += x+x + 1;
 		}
 		else {
-			p += x+x + 3 -y-y;
+			p += x+x + 1 -y-y;
 			--y;
 			for(int i=0; i<x; i++) {
-				/*arr[y+cy][i+cx] = 1;
+				arr[y+cy][i+cx] = 1;
 				arr[-y+cy][i+cx] = 1;
 				arr[y+cy][-i+cx] = 1;
 				arr[-y+cy][-i+cx] = 1;
 				arr[i+cy][y+cx] = 1;
 				arr[-i+cy][y+cx] = 1;
 				arr[i+cy][-y+cx] = 1;
-				arr[-i+cy][-y+cx] = 1;*/
+				arr[-i+cy][-y+cx] = 1;
 			}
 		}
 		arr[y+cy][x+cx] = 1;
