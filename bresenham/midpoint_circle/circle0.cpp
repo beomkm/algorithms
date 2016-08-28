@@ -1,3 +1,9 @@
+/*
+http://tibyte.kr/253
+*/
+
+
+
 #include <bits/stdc++.h>
 
 const int SIZE = 28;
@@ -19,11 +25,11 @@ int main(void)
 void drawCircle(int arr[SIZE][SIZE], int r, int cx, int cy)
 {
 	int x, y;
-	double p;
+	int p;
 	
 	x = 0;
 	y = r;
-	p = 0 - r; 
+	p = 1 - r; 
 	
 	arr[y+cy][x+cx] = 1;
 	arr[-y+cy][x+cx] = 1;
@@ -36,8 +42,9 @@ void drawCircle(int arr[SIZE][SIZE], int r, int cx, int cy)
 			p += x+x + 1;
 		}
 		else {
-			y -= 1;
-			p += x+x + 1 -y-y;
+			p += x+x -y-y + 1;
+			--y;
+			
 			for(int i=0; i<x; i++) {
 				arr[y+cy][i+cx] = 2;
 				arr[-y+cy][i+cx] = 3;
