@@ -10,7 +10,7 @@ int main()
 
 	scanf("%d%d", &num, &base);
 	
-	for(;num>0;) {
+	for(;num>base;) {
 		res[i--] = "0123456789ABCDEF"[num%base];
 		num /= base;
 	}
