@@ -13,14 +13,14 @@ function init()
    canvas = document.getElementById("canvas");
    ctx = canvas.getContext("2d");
 
-   drawCircle(ctx, 100, 120, 119);
-   drawCircle(ctx, 50, 200, 119);
-   drawCircle(ctx, 25, 190, 170);
-   drawCircle(ctx, 75, 120, 189);
+   drawCircle(ctx, 120, 119, 100);
+   drawCircle(ctx, 200, 119, 50);
+   drawCircle(ctx, 190, 170, 25);
+   drawCircle(ctx, 120, 189, 75);
 
 }
 
-function drawCircle(ctx, r, cx, cy)
+function drawCircle(ctx, cx, cy, r)
 {
     var x, y;
     var p;
