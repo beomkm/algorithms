@@ -18,44 +18,46 @@ var numPoints = 0;
 
 function init()
 {
-   canvas = document.getElementById("canvas");
-   ctx = canvas.getContext("2d");
+  canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
 
-   width = canvas.width;
-   height = canvas.height;
+  width = canvas.width;
+  height = canvas.height;
 
-   for(var i=0; i<height; i++) {
-     for(var j=0; j<width; j++) {
-       pixels[i*width + j] = 0;
-     }
-   }
+  for(var i=0; i<height; i++) {
+    for(var j=0; j<width; j++) {
+      pixels[i*width + j] = 0;
+    }
+  }
 
 
-   for(var i=0; i<10; i++) {
-       for(var j=0; j<10; j++) {
-           var cx = j*80-100;
-           var cy = i*92+j*48-250;
-           for(var k=0; k<6; k++) {
-               points[numPoints] = {};
-               points[numPoints].x = cx + 30*Math.cos(k*Math.PI/3+3);
-               points[numPoints].y = cy + 30*Math.sin(k*Math.PI/3+3);
+  for(var i=0; i<10; i++) {
+    for(var j=0; j<10; j++) {
+      var cx = j*80-100;
+      var cy = i*92+j*46-250;
+      for(var k=0; k<6; k++) {
+        points[numPoints] = {};
+        points[numPoints].x = cx + 36*Math.cos(k*Math.PI/3+11/180*Math.PI);
+        points[numPoints].y = cy + 36*Math.sin(k*Math.PI/3+11/180*Math.PI);
 
-               var rr = (points[numPoints].y+points[numPoints].x)/8;
-               var rg = (points[numPoints].y*2+points[numPoints].x*4)/8;
-               var rb = (points[numPoints].y*4+points[numPoints].x*8)/8;
+        var rr = (points[numPoints].y+points[numPoints].x)/8;
+        var rg = (points[numPoints].y*2+points[numPoints].x*4)/8;
+        var rb = (points[numPoints].y*4+points[numPoints].x*8)/8;
 
-               rr = Math.floor(rr);
-               rg = Math.floor(rg);
-               rb = Math.floor(rb);
+        rr = Math.floor(rr);
+        rg = Math.floor(rg);
+        rb = Math.floor(rb);
 
-               points[numPoints].c = "rgb("+rr+","+rg+","+rb+")";
-               ++numPoints;
-           }
-       }
-   }
+        points[numPoints].c = "rgb("+rr+","+rg+","+rb+")";
 
-   fill(ctx);
-   edge(ctx);
+        ++numPoints;
+      }
+    }
+  }
+
+  fill(ctx);
+  edge(ctx);
+  //point(ctx);
 
 }
 
@@ -93,5 +95,14 @@ function edge(ctx)
         ctx.fillRect(j, i, 1, 1);
       }
     }
+  }
+}
+
+function point(ctx)
+{
+  for(var k=0; k<numPoints; k++) {
+    console.log("aa");
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(points[k].x, points[k].y, 2, 2);
   }
 }
